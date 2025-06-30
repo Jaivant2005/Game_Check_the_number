@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            background-color: slategrey;
+        }
+      h1 {
+        padding: 100px;
+        text-align: center;
+        font-size:40px;
+
+      }
+      input{
+      margin-left: 40%;
+      margin-right: 45%;
+        display: flex;
+        align-items: center;
+        flex-direction: column; 
+    
+      }
+      a{
+         margin-left: 47%;
+         margin-right: 42%;
+      }
+      button{
+      background-color: lightseagreen;
+      font-size: x-large;
+       margin-left: 43%;
+         margin-right: 45%;
+      }
+      #d1{
+         margin-left: 41%;
+         margin-right: 43%;
+      }
+
+      #result{
+        margin-left: 35%;
+         margin-right: 35%;
+      }
+
+
+
+    </style>
+</head>
+<body>
+    <h1>I have a Number in my mind Between 1 to 100.can you guess it?</h1>
+    <input type="number" id="guess"><br><br>
+
+    <button onclick="checkguess()">submit</button>
+
+      <h2 id="d1">Lives ❤️:10</h2>
+
+      <div id="result"></div>
+
+      <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+       let lives = 10;
+
+function checkguess() {
+  const userGuess = parseInt(document.getElementById("guess").value);
+  const result = document.getElementById("result");
+
+  if (lives <= 0) {
+    window.location.href="lose.html";
+    return;
+  }
+
+  if (userGuess == randomNumber) {
+    window.location.href="win.html";
+  } 
+  else {
+    lives--;
+    document.getElementById("d1").innerText = `Lives❤️:${lives}`;
+
+    if (lives == 0) {
+      window.location.href="lose.html";
+    } 
+    else if (userGuess>randomNumber) {
+      result.innerHTML = `Oops! Your guess is too high. You have ${lives} lives remaining.`;
+    }
+     else {
+      result.innerHTML = `Oops! Your guess is too low. You have ${lives} lives remaining.`;
+    }
+}
+}
+      </script>
+</body>
+</html>
